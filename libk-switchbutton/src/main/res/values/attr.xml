@@ -7,6 +7,7 @@
         <attr name="selectedTab" format="integer" />
         <attr name="selectedColor" format="color|reference" />
         <attr name="unSelectedTextColor" format="color|reference" />
+        <attr name="selectedTextColor" format="color|reference" />
         <attr name="switchTabs" format="reference" />
     </declare-styleable>
 </resources>
