@@ -59,6 +59,7 @@ public class SwitchMultiButton extends View {
     private float mStrokeRadius;
     private float mStrokeWidth;
     private int mSelectedColor;
+    private int mUnselectedTextColor;
     private float mTextSize;
     private int mSelectedTab;
     private float perWidth;
@@ -92,6 +93,7 @@ public class SwitchMultiButton extends View {
         mStrokeWidth = typedArray.getDimension(R.styleable.SwitchMultiButton_strokeWidth, STROKE_WIDTH);
         mTextSize = typedArray.getDimension(R.styleable.SwitchMultiButton_textSize, TEXT_SIZE);
         mSelectedColor = typedArray.getColor(R.styleable.SwitchMultiButton_selectedColor, SELECTED_COLOR);
+        mUnselectedTextColor = typedArray.getColor(R.styleable.SwitchMultiButton_unSelectedTextColor, SELECTED_COLOR);
         mSelectedTab = typedArray.getInteger(R.styleable.SwitchMultiButton_selectedTab, SELECTED_TAB);
         int mSwitchTabsResId = typedArray.getResourceId(R.styleable.SwitchMultiButton_switchTabs, 0);
         if (mSwitchTabsResId != 0) {
@@ -123,7 +125,7 @@ public class SwitchMultiButton extends View {
         // unselected text paint
         mUnselectedTextPaint = new TextPaint(Paint.ANTI_ALIAS_FLAG);
         mUnselectedTextPaint.setTextSize(mTextSize);
-        mUnselectedTextPaint.setColor(mSelectedColor);
+        mUnselectedTextPaint.setColor(mUnselectedTextColor);
         mStrokePaint.setAntiAlias(true);
         mTextHeightOffset = -(mSelectedTextPaint.ascent() + mSelectedTextPaint.descent()) * 0.5f;
         mFontMetrics = mSelectedTextPaint.getFontMetrics();
@@ -381,6 +383,7 @@ public class SwitchMultiButton extends View {
         bundle.putFloat("StrokeWidth", mStrokeWidth);
         bundle.putFloat("TextSize", mTextSize);
         bundle.putInt("SelectedColor", mSelectedColor);
+        bundle.putInt("UnSelectedTextColor", mUnselectedTextColor);
         bundle.putInt("SelectedTab", mSelectedTab);
         return bundle;
     }
@@ -394,6 +397,7 @@ public class SwitchMultiButton extends View {
             mTextSize = bundle.getFloat("TextSize");
             mSelectedColor = bundle.getInt("SelectedColor");
             mSelectedTab = bundle.getInt("SelectedTab");
+            mUnselectedTextColor = bundle.getInt("UnSelectedTextColor");
             super.onRestoreInstanceState(bundle.getParcelable("View"));
         } else {
             super.onRestoreInstanceState(state);
